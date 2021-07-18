@@ -7,12 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   // properties
+  length = 0;
   incluedeletters = false;
   incluedenumbers = false;
   incluedesymbols = false;
   password = '';
 
   // methords
+  onChangeLength(event: any) {
+    const parsedvalue = parseInt(event.target.value + ' | ');
+    // check input is a number
+    if (!isNaN(parsedvalue)) {
+      this.length = parsedvalue;
+    }
+
+  }
+
   onChangeUseletters() {
     this.incluedeletters = !this.incluedeletters;
   }
@@ -26,16 +36,34 @@ export class AppComponent {
   }
 
   onButtonClick() {
-    this.password = 'My Password!!!'
+    const numbers = '1234567890';
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    const symbols = '!@#$%^&*()';
 
-    console.log(`
-    About to generate a password with the following:
-    includes leters: ${this.incluedeletters}
-    INcludes numbers: ${this.incluedenumbers}
-    Includes symbols: ${this.incluedesymbols}
-    `);
+    let validChars = '';
+    // check
+    if (this.incluedeletters) {
+      validChars += letters;
+    }
+    if (this.incluedenumbers) {
+      validChars += numbers;
+    }
+    if (this.incluedesymbols) {
+      validChars += symbols;
+    }
 
-
+    let generatedPassword = '';
+    // console.log(validChars);
+    for (let i = 0; i < this.length; i++) {
+      const index = Math.floor(Math.random() * validChars.length)
+      generatedPassword += validChars[index];
+    }
+    this.password = generatedPassword;
   }
+
+
+
+
+
 
 }
