@@ -21,7 +21,15 @@
 </div>
 
 <div>
-  <button (click)="onButtonClick()">Generate!</button>
+  <!-- button is disabled unless length and one or all inclueds are selected -->
+  <button
+    [disabled]="
+      !(length && (incluedeletters || incluedenumbers || incluedesymbols))
+    "
+    (click)="onButtonClick()"
+  >
+    Generate!
+  </button>
 </div>
 
 <div>

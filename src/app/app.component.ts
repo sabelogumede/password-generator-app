@@ -41,7 +41,7 @@ export class AppComponent {
     const symbols = '!@#$%^&*()';
 
     let validChars = '';
-    // check
+    // check and inclued selected options to our validChars
     if (this.incluedeletters) {
       validChars += letters;
     }
@@ -51,9 +51,10 @@ export class AppComponent {
     if (this.incluedesymbols) {
       validChars += symbols;
     }
+    // console.log(validChars);
 
     let generatedPassword = '';
-    // console.log(validChars);
+
     for (let i = 0; i < this.length; i++) {
       const index = Math.floor(Math.random() * validChars.length)
       generatedPassword += validChars[index];
