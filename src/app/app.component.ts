@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   // properties
   length = 0;
@@ -60,11 +61,8 @@ export class AppComponent {
       generatedPassword += validChars[index];
     }
     this.password = generatedPassword;
+
   }
-
-
-
-
 
 
 }
